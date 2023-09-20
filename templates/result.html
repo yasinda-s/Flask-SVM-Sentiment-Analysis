@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Prediction Results</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="result-main">
+    <h1>Prediction Results</h1>
+    <p>The phrase you entered was "{{user_text}}"</p>
+    <p>The sentiment prediction for this phrase is: <strong>{{sentiment}}</strong></p>
+    <br><br>
+    <table>
+        <tr>
+            <th>Sentiment</th>
+            <th>Model Confidence</th>
+        </tr>
+        {% for prob in proba %}
+        <tr>
+            <td>Negative</td>
+            <td>{{prob[0]}}</td>
+        </tr>
+        <tr>
+            <td>Neutral</td>
+            <td>{{prob[1]}}</td>
+        </tr>
+        <tr>
+            <td>Positive</td>
+            <td>{{prob[2]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
